@@ -33,5 +33,41 @@ Pertama, StatelessWidget adalah jenis widget dalam Flutter yang tidak mengubah s
 - Center adalah sebuah widget yang menengahkan widget anaknya di tengah-tengah tata letak.
 
 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
+- Membuat sebuah program Flutter baru dengan tema inventory seperti tugas-tugas sebelumnya.
+Jalankan command flutter create mart_project untuk generate proyek Flutter
+Masuk ke dalam direktori proyek tersebut dengan command cd mart_project
+
+- Membuat Tiga Tombol Sederhana.
+Buka file main.dart yang terletak di direktori lib pada proyek saya.
+Tambahkan Tombol Pertama:
+
+Dalam widget MyHomePage, tambahkan ElevatedButton pertama dengan ikon dan teks "Lihat Item".
+Tambahkan Tombol Kedua dan Ketiga:
+
+Selanjutnya, tambahkan ElevatedButton kedua dan ketiga dengan ikon dan teks "Tambah Item" dan "Logout" seperti yang telah dijelaskan sebelumnya.
+Definisikan Aksi Tombol. Di dalam properti onPressed masing-masing tombol, saya dapat menentukan aksi yang akan dilakukan saat tombol ditekan. Namun, pada tahap ini, kita akan fokus pada menampilkan Snackbar.
+
+- Menampilkan Snackbar.
+Import Snackbar, saya telah mengimpor widget SnackBar di bagian atas file main.dart
+import 'package:flutter/material.dart';
+Gunakan ScaffoldMessenger:
+Di dalam properti onPressed masing-masing tombol, gunakan ScaffoldMessenger.of(context).showSnackBar() untuk menampilkan Snackbar.
+
+Contoh:
+ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Text('Kamu telah menekan tombol Lihat Item'),
+  ),
+);
+
+Ulangi langkah di atas untuk tombol "Tambah Item" dan "Logout", sesuaikan pesan Snackbar sesuai tombol yang ditekan.
+
+- Menjalankan Aplikasi:
+Simpan perubahan pada file main.dart dan jalankan aplikasi dengan perintah flutter run.
+
+Ketika saya menjalankan aplikasi, saya akan melihat tiga tombol. Ketika saya menekan salah satu tombol, Snackbar akan muncul dengan pesan yang sesuai.
+
+Pastikan bahwa setiap tombol memunculkan Snackbar dengan pesan yang benar saat ditekan.
+Sekarang, saya seharusnya memiliki aplikasi Flutter dengan tiga tombol sederhana yang muncul Snackbar dengan pesan yang sesuai ketika ditekan. Jika ada masalah atau pertanyaan lebih lanjut, jangan ragu untuk bertanya!
 
  --- END TUGAS 7 ---
