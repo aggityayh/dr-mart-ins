@@ -2,6 +2,7 @@ import 'package:mart_project/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:mart_project/screens/register.dart';
 
 void main() {
     runApp(const LoginApp());
@@ -58,6 +59,21 @@ class _LoginPageState extends State<LoginPage> {
                                 labelText: 'Password',
                             ),
                             obscureText: true,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RegisterPage()),
+                            );
+                          },
+                          child: const Text(
+                            "Don't have an account? Register here.",
+                            style: TextStyle(
+                              color: Colors.blue, // You can change the color as needed
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 24.0),
                         ElevatedButton(
