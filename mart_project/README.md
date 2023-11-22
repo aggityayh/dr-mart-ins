@@ -298,3 +298,91 @@ ListTile(
 ```
 
  --- END TUGAS 8 ---
+
+
+ --- START TUGAS 9 ---
+
+ 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Ya, bisa.
+Pemrosesan data JSON dalam berbagai bahasa pemrograman memungkinkan akses langsung ke struktur data generik, seperti dictionaries di Python, objects di JavaScript, atau hashmaps di Java, tanpa perlu menentukan model atau kelas khusus terlebih dahulu.
+
+Mengakses Data JSON tanpa Model:
+
+Mengizinkan fleksibilitas dalam memproses data dengan struktur yang mungkin beragam.
+Menyediakan kemudahan dan kecepatan dalam penggunaan.
+Sifatnya dinamis, bermanfaat saat berinteraksi dengan API yang menghasilkan respons dengan berbagai format.
+Menggunakan Model untuk Data JSON:
+
+Memungkinkan validasi data yang lebih baik.
+Kode menjadi lebih terstruktur dan mudah dipahami, terutama pada proyek yang besar.
+Meningkatkan keamanan dengan membantu mencegah kesalahan spesifik, seperti injeksi data yang tidak aman.
+
+ 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+Fungsi dari CookieRequest adalah:
+- Memfasilitasi autentikasi serta manajemen sesi dengan menyimpan token atau ID sesi dalam cookie, memungkinkan server mengenali pengguna yang sama.
+- Menyimpan preferensi pengguna seperti tema atau pengaturan lokal dalam cookie, sehingga pengalaman pengguna tetap konsisten.
+- Digunakan untuk melacak perilaku pengguna guna keperluan analitik dan personalisasi konten.
+
+Pentingnya berbagi instance CookieRequest:
+- Menjamin konsistensi sesi pengguna di seluruh aplikasi dengan penggunaan instance yang sama, memastikan penggunaan cookie yang seragam pada setiap permintaan HTTP.
+- Membantu efisiensi manajemen cookie dengan mengelola cookie secara terpusat, mengurangi duplikasi kode, dan mempermudah pembaruan atau perubahan dalam penanganan cookie.
+- Menyediakan keamanan dengan pengelolaan cookie yang terpusat, memfasilitasi penerapan praktik keamanan konsisten, terutama dalam menangani cookie sensitif dengan cara yang aman.
+- Mempermudah proses pemeliharaan dan debugging. Ketika terjadi masalah dengan autentikasi atau manajemen sesi, pengelolaan cookie yang terpusat memudahkan proses debugging.
+
+ 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+Mengelola Permintaan HTTP dalam Flutter melibatkan beberapa langkah:
+- Memanfaatkan paket http untuk mengirimkan permintaan ke server secara langsung.
+- Setelah menerima respons dari server, mengonversi data yang umumnya berupa string ke dalam format JSON.
+- Opsional: Membuat kelas model untuk mengatur pemetaan data dari JSON ke objek Dart, memfasilitasi pengelolaan data secara lebih terstruktur.
+- Menggunakan setState atau state management lainnya, seperti Provider, untuk memperbarui antarmuka pengguna (UI) dengan data yang diperoleh.
+- Menampilkan data yang telah diolah ke dalam antarmuka pengguna (UI) Flutter menggunakan widget seperti ListView atau Text.
+
+ 4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+Pada aplikasi Flutter, proses input data dimulai dengan pengguna memasukkan informasi kredensial seperti username dan password. Data tersebut kemudian dikirimkan ke server Django melalui permintaan HTTP POST. Di sisi server, Django melakukan pemrosesan data dengan memverifikasi kredensial menggunakan sistem autentikasi yang telah ada, seperti django.contrib.auth.
+
+Jika kredensial yang dikirimkan benar, Django mengirimkan respons sukses kembali ke aplikasi Flutter, sering kali dengan disertai token autentikasi. Aplikasi Flutter akan mengarahkan pengguna ke halaman menu atau dashboard setelah menerima respons sukses tersebut.
+
+Namun, jika proses autentikasi gagal, Flutter akan menampilkan pesan kesalahan kepada pengguna dan meminta mereka untuk mencoba lagi. Proses ini memastikan bahwa pengguna diberitahu jika terjadi kesalahan dalam autentikasi, memberikan kesempatan untuk mencoba kembali.
+
+ 5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+Provider, dimana mengelola dan menyediakan data (dalam hal ini CookieRequest) ke seluruh aplikasi.
+MaterialApp, dimana root widget yang mengatur tema dan navigasi untuk aplikasi berbasis material design.
+Scaffold, dimana menyediakan kerangka dasar untuk layout halaman, termasuk AppBar, Drawer, dan Body.
+AppBar, dimana menampilkan bar di bagian atas layar, biasanya berisi judul halaman.
+Container, , dimana widget untuk mendekorasi dan menyusun child widget lainnya, sering digunakan untuk padding.
+Column, dimana mengatur child widget secara vertikal.
+TextField, dimana mengizinkan pengguna memasukkan teks.
+SizedBox, dimana memberikan jarak tetap antara widget.
+ElevatedButton, dimana tombol dengan efek elevasi, digunakan untuk memicu aksi.
+FutureBuilder, dimana membangun widget berdasarkan hasil terakhir dari Future, digunakan untuk operasi asinkron.
+ListView.builder, dimana membuat daftar item yang dapat di-scroll.
+Text, dimana untuk menampilkan teks.
+Padding, dimana menambahkan padding di sekitar widget anaknya.
+AlertDialog, dimana menampilkan dialog kepada pengguna, biasanya untuk konfirmasi atau informasi.
+TextButton, dimana tombol dengan gaya teks, biasanya digunakan dalam dialog.
+Form, dimana mengelola state dari form dan validasi input.
+GlobalKey, dimana key yang digunakan untuk mengidentifikasi state dari Form.
+TextEditingController, dimana mengontrol teks yang ditampilkan dan diubah dalam TextField.
+SnackBar, dimana menampilkan pesan singkat di bagian bawah layar.
+Navigator, dimana mengelola stack rute dan navigasi antar halaman.
+MaterialPageRoute, dimana membuat transisi halaman dengan gaya material design.
+LeftDrawer, dimana widget kustom yang bertindak sebagai menu navigasi samping.
+
+ 6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+Membuat halaman login dengan Flutter: Pembuatan halaman login dilakukan dengan membuat file login.dart di folder 'screens' yang akan mengelola input username dan password pengguna. Penggunaan paket 'pbp_django_auth' dan 'provider' bertujuan untuk mengelola autentikasi dan menyediakan data, khususnya CookieRequest, ke seluruh aplikasi.
+
+Integrasi sistem autentikasi Django dengan proyek Flutter: Melibatkan pengaturan integrasi pada proyek Django, instalasi package 'provider' dan 'pbp_django_auth' pada Flutter, serta memodifikasi root widget pada Flutter untuk mengelola state CookieRequest sebagai data global yang dapat diakses di seluruh aplikasi.
+
+Pembuatan model kustom untuk data dari proyek aplikasi Django: Melibatkan pengambilan data endpoint JSON dari proyek Django, konversi data menggunakan situs web Quicktype, pembuatan file 'item.dart' sebagai model yang memetakan data JSON ke objek Dart.
+
+Membuat halaman daftar item: Pembuatan file 'list_item.dart' yang menggunakan HTTP request untuk mendapatkan data item dari endpoint JSON di Django, menampilkan data seperti nama, jumlah, dan deskripsi dari setiap item dalam list.
+
+Pembuatan halaman detail item: Melibatkan pembuatan file 'item_detail.dart' yang menampilkan detail dari setiap item yang dipilih dari halaman daftar item. Halaman ini menampilkan semua atribut yang ada pada model item.
+
+ --- END TUGAS 9 ---
